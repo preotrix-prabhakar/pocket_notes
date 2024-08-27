@@ -1,0 +1,93 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 0;
+}
+
+.createBTN{
+    background: #16008B;
+    border: none;
+    font-size: 16px;
+    color: white;
+    padding: 5px 20px;
+    margin-top: 15px;
+    border-radius: 5px;
+}
+ .group-input-popup{
+    background-color: #FFFFFF;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 1;
+  }
+
+.plus-btn{
+    background: #16008B;
+    display: flex;
+    border-style: none;
+    height: 50px;
+    color: white;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    position: absolute;
+    right: 10px;
+    bottom: 15px;
+    font-size: 50px;
+    border-radius: 50%;
+}
+.colors-container {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+.color-circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+.container{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    font-family: 'Roboto';
+}
+.description{
+    padding: 0 20%;
+    text-align: center;
+}
+.grpName{
+    /* border-style: none; */
+    border-radius: 5%;
+}
+.left{
+width: 30%;
+position: relative;
+text-align: center;
+/* background-color: red; */
+}
+.right{
+    width: 100%;
+    flex: 1;
+    /* padding: 5% 5%; */
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #DAE5F5;
+}
+.right img{
+    width: 80%;
+    padding:10% 20%;
+}
