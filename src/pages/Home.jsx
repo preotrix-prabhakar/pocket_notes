@@ -1,23 +1,24 @@
 
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import poster from '../Assets/poster.png';
 import Footer from '../Components/Footer';
-import colors from '../data/colors'; // Assume this is an array of hex codes like ['#FF5733', '#33FF57', ...]
+import colors from '../data/colors'; 
 import './Home.css';
+import Sidebar from '../Components/Sidebar';
+import { GroupData } from '../context/GroupData';
 
 function Home() {
   const [toPopUp, setPopUp] = useState(false);
   const [groupName, setGroupName] = useState('');
   const [selectedColor,setSelectedColor]=useState('');
-  const [groups,setGroups]=useState([]);
+  const { groups, setGroups } = useContext(GroupData);
 
-  useEffect(()=>{
-    const storedGroups=JSON.parse(localStorage.getItem('groups'))||[];
-    console.log(storedGroups);
-  },[])
+  // useEffect(()=>{
+  //   const storedGroups=JSON.parse(localStorage.getItem('groups'))||[];
+  //   console.log(storedGroups);
+  // },[])
 
   const choice=(clr)=>{
-    // console.log(clr);
     setSelectedColor(clr);
   }
 
@@ -26,7 +27,6 @@ function Home() {
   };
   const handleGroupNameChange = (e) => {
     setGroupName(e.target.value);
-    // console.log(e.target.value);
   };
   const pushGroup=()=>{
 
@@ -34,7 +34,6 @@ function Home() {
       const recentGroup={groupName,selectedColor};
       const updatedGroup=[...groups,recentGroup];
       setGroups(updatedGroup);
-      localStorage.setItem('groups',JSON.stringify(updatedGroup));
       setSelectedColor('');
       setGroupName('');
       setPopUp(false);
@@ -52,6 +51,7 @@ function Home() {
       <div className="container">
         <div className="left">
           <h1>Pocket Notes</h1>
+          <Sidebar/>
           <button className='plus-btn' onClick={handlePlus}>
             +
           </button>
@@ -71,14 +71,13 @@ function Home() {
                 onChange={handleGroupNameChange}
               />
               <div className="colors-container">
-                <label htmlFor="colorChoose">Choose color:</label>
+                <label >Choose color:</label>
                 {colors.map((clr, index) => (
 
                   <button
                     onClick={()=> choice(clr)}
                     key={index}
                     className="color-circle"
-                    // colour={clr}
                     style={{
                        backgroundColor: clr,
                        border: clr === selectedColor ? '2px solid black' : 'none' }}
