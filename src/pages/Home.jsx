@@ -13,10 +13,6 @@ function Home() {
   const [selectedColor,setSelectedColor]=useState('');
   const { groups, setGroups } = useContext(GroupData);
 
-  // useEffect(()=>{
-  //   const storedGroups=JSON.parse(localStorage.getItem('groups'))||[];
-  //   console.log(storedGroups);
-  // },[])
 
   const choice=(clr)=>{
     setSelectedColor(clr);
