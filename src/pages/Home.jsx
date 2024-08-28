@@ -24,6 +24,9 @@ function Home() {
   const handleGroupNameChange = (e) => {
     setGroupName(e.target.value);
   };
+  
+
+  
   const pushGroup=()=>{
 
     if(selectedColor&& groupName){

@@ -6,8 +6,8 @@ export const AppProvider = ({ children }) => {
    
     // localStorage.clear()
     const [groups, setGroups] = useState(() => {
-        const storedGroups = JSON.parse(localStorage.getItem('groups')) || [];
-        return storedGroups;
+        return  JSON.parse(localStorage.getItem('groups')) || [];
+      
     });
 
     useEffect(() => {
