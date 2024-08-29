@@ -10,12 +10,26 @@ export const AppProvider = ({ children }) => {
       
     });
 
+    const [selectedGroup,setSelectedGroup]=useState(null);
+
+    const addNoteToGroup=(groupName,note)=>{
+        setGroups(prevGroups=>{
+            return prevGroups.map(group=>{
+                if (group.groupName === groupName) {
+                    const updatedNotes = [...(group.notes||[]), { note, timestamp: new Date().toISOString() }];
+                    return { ...group, notes: updatedNotes };
+                }
+                return group;
+            })
+        })
+    }
+    
     useEffect(() => {
         localStorage.setItem('groups', JSON.stringify(groups));
     }, [groups]);
 
     return (
-        <GroupData.Provider value={{ groups, setGroups }}>
+        <GroupData.Provider value={{ groups, setGroups,selectedGroup,setSelectedGroup,addNoteToGroup }}>
             {children}
         </GroupData.Provider>
     );

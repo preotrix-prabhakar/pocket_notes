@@ -1,0 +1,115 @@
+.group-notes-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    padding: 20px;
+    background-color: #f9f9f9;
+    overflow-y: auto;
+  }
+  
+  .group-header {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    background-color: #e0e0e0;
+  }
+  
+  .group-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    color: #000000;
+    font-weight: bold;
+    font-size: 20px;
+    margin-right: 10px;
+  }
+  
+  .group-name {
+    font-size: 20px;
+    font-weight: bold;
+    color: #ffffff;
+  }
+  
+  .notes-section {
+    margin-top: 20px;
+  }
+  
+  .note {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    position: relative;
+  }
+  
+  .note p {
+    margin: 0;
+  }
+  .note-text {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  .note-container {
+    background-color: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+  .note-timestamp {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 14px;
+    color: gray;
+    margin-top: -10px; /* Adjust margin to control the spacing between the note and timestamp */
+  }
+  .note-timestamp span {
+    margin-left: 5px;
+  }
+  
+  .no-notes {
+    color: #888888;
+    font-style: italic;
+    text-align: center;
+    margin: 20px 0;
+  }
+  
+  .note-input-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .note-input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    font-size: 16px;
+    resize: none;
+    margin-right: 10px;
+  }
+  
+  .add-note-btn {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .add-note-btn:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+  }
+  
