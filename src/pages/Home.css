@@ -21,15 +21,21 @@
 }
  .group-input-popup{
     background-color: #FFFFFF;
+   
     position: absolute;
     top: 50%;
     left: 50%;
+    width: 50%;
+    max-width: 500px;
     transform: translate(-50%, -50%);
-    padding: 20px;
+    padding: 3%;
     border-radius: 10px;
-    z-index: 1;
+    z-index: 1000;
   }
 
+  .group-input-popup h1{
+    padding: 15px;
+  }
 .plus-btn{
     background: #16008B;
     display: flex;
@@ -39,9 +45,9 @@
     align-items: center;
     justify-content: center;
     width: 50px;
-    position: absolute;
-    right: 10px;
-    bottom: 15px;
+    position: sticky;
+    left: 50%;
+    top: 92%;
     font-size: 50px;
     border-radius: 50%;
 }
@@ -62,25 +68,42 @@
     width: 100vw;
     display: flex;
     font-family: 'Roboto';
+    
 }
 .description{
     padding: 0 20%;
     text-align: center;
 }
-.grpName{
-    /* border-style: none; */
-    border-radius: 5%;
+.grpName {
+  
+    padding: 5px 15px;
+    margin: 15px auto;
+    border: 2px solid #CCCCCC;
+    border-radius: 25px;
+    color: black
+ 
 }
-.left{
-width: 30%;
-position: relative;
-text-align: center;
-/* background-color: red; */
+.grpName::placeholder{
+    color: #979797;
 }
+.heading{
+    margin: 30px 5px;
+    position: sticky;
+    top: 0px;
+    padding: 20px 10px;
+    background-color: white;
+}
+
+.left {
+    width: 20%;
+    position: relative;
+    text-align: center;
+    height: 100vh;
+  }
 .right{
     width: 100%;
+    height: 100%;
     flex: 1;
-    /* padding: 5% 5%; */
     flex-wrap: wrap;
     display: flex;
     flex-direction: column;
@@ -91,3 +114,61 @@ text-align: center;
     width: 80%;
     padding:10% 20%;
 }
+
+
+
+ /* Mobile view adjustments */
+@media (max-width: 768px) {
+    .container {
+      display: block;
+      height: 100vh;
+      width: 100vw;
+      overflow: hidden; /* Ensure no scrollbars appear */
+    }
+  
+    .left {
+      width: 100%;
+      height: auto;
+      position: relative;
+      overflow: hidden; /* Hide overflow to ensure no scrollbars appear */
+    }
+  
+    .right {
+      display: none;
+    }
+  
+    .group-notes-container.active {
+      display: block;
+      width: 100%;
+      height: 100vh;
+      background-color: #DAE5F5;
+      position: fixed; /* Use fixed to keep it in place */
+      top: 0;
+      left: 0;
+      z-index: 1001;
+      padding: 20px;
+    }
+  
+    .back-btn {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background-color: #16008B;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+    }
+  
+    .plus-btn {
+      position: fixed;
+      bottom: 15px;
+      right: 15px;
+      font-size: 30px; /* Adjust size for mobile */
+    }
+  
+    .overlay {
+      display: none; /* Hide overlay in mobile view if not needed */
+    }
+  }
+  

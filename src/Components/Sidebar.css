@@ -1,5 +1,4 @@
 .AllGroup{
-   
     display: flex;
     gap: 10px;
     height: 50px;
@@ -8,11 +7,13 @@
     margin:10px;
     margin-left: 0;
     cursor: pointer;
-    /* overflow-y: scroll; */
+    
 }
 .parent{
-    overflow-y: scroll;
-    max-height: 100vh;
+    overflow-y: auto;
+    max-height: 78vh;
+    display: flex;
+    flex-direction: column;
 }
 .icon{
     width: 50px;

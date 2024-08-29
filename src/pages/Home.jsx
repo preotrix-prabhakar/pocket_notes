@@ -1,19 +1,20 @@
 
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext,useEffect, useRef } from 'react';
 import poster from '../Assets/poster.png';
 import Footer from '../Components/Footer';
 import colors from '../data/colors';
 import './Home.css';
 import Sidebar from '../Components/Sidebar';
-import GroupNotes from '../Components/GroupNotes'; // Import the new component
+import GroupNotes from '../Components/GroupNotes'; 
 import { GroupData } from '../context/GroupData';
 
 function Home() {
   const [toPopUp, setPopUp] = useState(false);
   const [groupName, setGroupName] = useState('');
   const [selectedColor, setSelectedColor] = useState('');
+  const popupRef = useRef(null);
 
-  const { groups, setGroups, selectedGroup } = useContext(GroupData); // Add selectedGroup from context
+  const { groups, setGroups, selectedGroup } = useContext(GroupData); 
 
   const handlePlus = () => {
     setPopUp(!toPopUp);
@@ -40,11 +41,31 @@ function Home() {
     setSelectedColor(clr);
   };
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (popupRef.current && !popupRef.current.contains(event.target)) {
+        setPopUp(false);
+      }
+    };
+
+    if (toPopUp) {
+      document.addEventListener('mousedown', handleClickOutside);
+    } else {
+      document.removeEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [toPopUp])
   return (
     <>
       <div className="container">
         <div className="left">
-          <h1>Pocket Notes</h1>
+          <div className='heading'>
+
+          <h1 >Pocket Notes</h1>
+          </div>
           <Sidebar />
           <button className='plus-btn' onClick={handlePlus}>
             +
@@ -53,7 +74,7 @@ function Home() {
         {toPopUp && (
           <>
             <div className="overlay"></div>
-            <div className="group-input-popup">
+            <div className="group-input-popup" ref={popupRef}>
               <h1>Create New Group</h1>
               <label>Group Name :</label>
               <input

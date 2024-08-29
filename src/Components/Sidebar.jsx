@@ -5,7 +5,7 @@ import "./Sidebar.css"
 function Sidebar() {
     const { groups,selectedGroup,setSelectedGroup } = useContext(GroupData);
     const handleGroupClick = (group) => {
-        console.log(group)
+        
         setSelectedGroup(group);
     };
 
@@ -19,6 +19,7 @@ function Sidebar() {
             return `${wordArray[0][0]}${wordArray[wordArray.length-1][0]}`
         }
     }
+    
     return (
         <div className='parent'>
             {groups.map((group, index) => (

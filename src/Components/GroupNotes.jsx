@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { GroupData } from '../context/GroupData';
 import './GroupNotes.css';
-
+import { MdSend } from 'react-icons/md';
 function GroupNotes() {
   const [note, setNote] = useState('');
   const { selectedGroup, setSelectedGroup, addNoteToGroup, groups } = useContext(GroupData);
@@ -14,6 +14,12 @@ function GroupNotes() {
     if (note.trim()) {
       addNoteToGroup(selectedGroup.groupName, note.trim());
       setNote('');
+    }
+  };
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter' && !e.shiftKey && note.trim()) {
+      e.preventDefault();
+      handleAddNote();
     }
   };
 
@@ -43,44 +49,51 @@ function GroupNotes() {
             <h2 className="group-name">{selectedGroup.groupName}</h2>
           </div>
           <div className="notes-section">
-  {selectedGroup.notes && selectedGroup.notes.length > 0 ? (
-    selectedGroup.notes.map((note, index) => (
-      <div key={index} className="note-container">
-        <p className="note-text">{note.note}</p>
-        <div className="note-timestamp">
-          <span>{new Date(note.timestamp).toLocaleString('en-GB', {
-            day: '2-digit',
-            month: 'short',
-            year: 'numeric'
-          })}</span>
-          <span>•</span>
-          <span>{new Date(note.timestamp).toLocaleString('en-GB', {
-            hour: '2-digit',
-            minute: '2-digit',
-            hour12: true
-          })}</span>
-        </div>
-      </div>
-    ))
-  ) : (
-    <p>No notes available. Add a new note below.</p>
-  )}
-</div>
-
+            {selectedGroup.notes && selectedGroup.notes.length > 0 ? (
+              selectedGroup.notes.map((note, index) => (
+                <div key={index} className="note-container">
+                  <p className="note-text">{note.note}</p>
+                  <div className="note-timestamp">
+                    <span>{new Date(note.timestamp).toLocaleString('en-GB', {
+                      day: '2-digit',
+                      month: 'short',
+                      year: 'numeric'
+                    })}</span>
+                    <span>•</span>
+                    <span>{new Date(note.timestamp).toLocaleString('en-GB', {
+                      hour: '2-digit',
+                      minute: '2-digit',
+                      hour12: true
+                    })}</span>
+                  </div>
+                </div>
+              ))
+            ) : (
+              <p className="no-notes">No notes available. Add a new note below.</p>
+            )}
+          </div>
           <div className="note-input-container">
             <textarea
               className="note-input"
               placeholder="Enter your text here..."
               value={note}
-              style={{ border: `5px solid ${selectedGroup.selectedColor}` }}
+              style={{ 
+                color: !note.trim() ? 'red' : 'black',
+                border: `20px solid ${selectedGroup.selectedColor}`}}
               onChange={handleNoteChange}
-            />
+              onKeyDown={handleKeyDown}
+              />
+              
             <button
               onClick={handleAddNote}
               className="add-note-btn"
               disabled={!note.trim()}
+              
             >
-              Send
+              <MdSend
+              style={{ margin: '10px' }}
+              size={30} 
+              color={!note.trim() ? '#CCCCCC' : selectedGroup.selectedColor}/>
             </button>
           </div>
         </>
